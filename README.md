@@ -1,4 +1,4 @@
-#⚡ EV Charging Classification Project
+# ⚡ EV Charging Classification Project
 
 ## Project Overview
 
