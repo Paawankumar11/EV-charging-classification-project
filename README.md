@@ -1,4 +1,4 @@
-# EV Charging Classification Project
+#⚡ EV Charging Classification Project
 
 ## Project Overview
 
@@ -8,7 +8,7 @@ The project is designed around a practical problem: power-rating information may
 
 The target variable is `has_fast_dc`, making this a binary classification problem.
 
-## Live Application
+## 🚀Live Application
 
 Deployed application:
 
@@ -93,7 +93,7 @@ The application provides two possible outcomes:
 - **High-Speed DC Fast Charging Available**
 - **Standard AC / Low-Power Charging Only**
 
-## Repository Structure
+## 📁Repository Structure
 
 ```text
 EV-charging-classification-project/
@@ -187,12 +187,6 @@ Fast-charging locations show geographic clustering, particularly across Western 
 
 Several columns were mathematically related to the target variable. Removing these features helped avoid artificially inflated model performance and produced a more realistic evaluation.
 
-## Limitations
-
-The model predicts fast DC charging availability from infrastructure and geographic information. The prediction should therefore be considered a classification estimate rather than a guarantee of the actual charging capability at a physical location.
-
-The reported fast-DC recall of 59% also indicates that the model does not identify every true fast-DC location.
-
 ## Future Improvements
 
 - Improve fast-DC recall through threshold tuning or resampling.
@@ -201,6 +195,6 @@ The reported fast-DC recall of 59% also indicates that the model does not identi
 - Expand the deployed application into a lightweight API.
 - Evaluate the model on newer charging infrastructure data.
 
-## Author
+## 👤 Project by
 
-**Paawan Tyagi**
+**Paawan Kumar**
