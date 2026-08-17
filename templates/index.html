@@ -457,11 +457,15 @@
                             <label for="country">Infrastructure Territory</label>
                             <select id="country" name="country">
                                 <option value="US" {% if prev_country == 'US' %}selected{% endif %}>United States (US)</option>
-                                <option value="DE" {% if prev_country == 'DE' %}selected{% endif %}>Germany (DE)</option>
-                                <option value="FR" {% if prev_country == 'FR' %}selected{% endif %}>France (FR)</option>
                                 <option value="GB" {% if prev_country == 'GB' %}selected{% endif %}>United Kingdom (GB)</option>
-                                <option value="NO" {% if prev_country == 'NO' %}selected{% endif %}>Norway (NO)</option>
+                                <option value="DE" {% if prev_country == 'DE' %}selected{% endif %}>Germany (DE)</option>
+                                <option value="ES" {% if prev_country == 'ES' %}selected{% endif %}>Spain (ES)</option>
                                 <option value="CA" {% if prev_country == 'CA' %}selected{% endif %}>Canada (CA)</option>
+                                <option value="FR" {% if prev_country == 'FR' %}selected{% endif %}>France (FR)</option>
+                                <option value="IT" {% if prev_country == 'IT' %}selected{% endif %}>Italy (IT)</option>
+                                <option value="NL" {% if prev_country == 'NL' %}selected{% endif %}>Netherlands (NL)</option>
+                                <option value="SE" {% if prev_country == 'SE' %}selected{% endif %}>Sweden (SE)</option>
+                                <option value="NO" {% if prev_country == 'NO' %}selected{% endif %}>Norway (NO)</option>
                                 <option value="Other" {% if prev_country == 'Other' or not prev_country %}selected{% endif %}>Other Territory</option>
                             </select>
                         </div>
