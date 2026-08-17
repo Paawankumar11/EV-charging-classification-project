@@ -62,29 +62,29 @@ def predict():
         full_country_name = code_to_name.get(country_code, 'Other')
         active_country_column = f"country_group_{full_country_name}"
 
-        # 4. Reconstruct the exact 15-feature matrix schema
-        expected_order = [
-            'latitude', 'longitude', 'station_count', 'port_count', 'ports_per_station',
-            'country_group_France', 'country_group_Germany', 'country_group_Italy', 
-            'country_group_Norway', 'country_group_Other', 'country_group_Portugal', 
-            'country_group_Spain', 'country_group_Sweden', 'country_group_United Kingdom', 
-            'country_group_United States'
-        ]
+        # 4. Dynamically get the EXACT columns the model/scaler expects!
+        # This completely prevents any "feature shape mismatch" errors on AWS
+        expected_order = list(scaler.feature_names_in_)
 
-        # Initialize base payload DataFrame with zeros
+        # Initialize base payload DataFrame with zeros using the exact expected columns
         input_df = pd.DataFrame(0.0, index=[0], columns=expected_order)
         
-        # Populate continuous numerical variables
-        input_df['latitude'] = lat
-        input_df['longitude'] = lon
-        input_df['station_count'] = station_count
-        input_df['port_count'] = port_count
-        input_df['ports_per_station'] = ports_per_station
+        # Populate continuous numerical variables (checking to ensure column exists)
+        if 'latitude' in input_df.columns: 
+            input_df['latitude'] = lat
+        if 'longitude' in input_df.columns: 
+            input_df['longitude'] = lon
+        if 'station_count' in input_df.columns: 
+            input_df['station_count'] = station_count
+        if 'port_count' in input_df.columns: 
+            input_df['port_count'] = port_count
+        if 'ports_per_station' in input_df.columns: 
+            input_df['ports_per_station'] = ports_per_station
         
         # Set active one-hot country column to 1.0; fall back to 'Other' if not matched
         if active_country_column in input_df.columns:
             input_df[active_country_column] = 1.0
-        else:
+        elif 'country_group_Other' in input_df.columns:
             input_df['country_group_Other'] = 1.0
 
         # 5. Apply the scaling transform across the complete structured DataFrame
